@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alchemist Quiz</title>
+    <style>
+        body {
+            background-color: black;
+            color: gold;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .question-container {
+            margin-top: 50px;
+        }
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .answers button {
+            background-color: gold;
+            color: black;
+            border: none;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .answers button:hover {
+            background-color: black;
+            color: gold;
+            border: 1px solid gold;
+        }
+        #rules, #result, #nextQuestion, #quiz-container, #nameForm, #leaderboard {
+            display: none;
+        }
+        #result.correct {
+            color: green;
+        }
+        #result.wrong {
+            color: red;
+        }
+        #timer {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        /* Style for the image */
+        #introImage {
+            width: 300px;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Alchemist Quiz</h1>
+    
+    <!-- Bild zur Startseite hinzufügen -->
+    <img id="introImage" src="Alchemist_Illustration.jpg" alt="Alchemist Illustration">
+    
+    <div id="rules">
+        <p>Regeln:</p>
+        <p>Es gibt 16 Fragen, jede Frage hat ein Zeitlimit von 13 Sekunden.</p>
+        <p>Je schneller du antwortest, desto mehr Punkte bekommst du (maximal 13 Punkte pro Frage).</p>
+        <p>Für jede verstrichene Sekunde wird ein Punkt abgezogen. Wenn die Zeit abläuft, gibt es 0 Punkte.</p>
+        <p>Sprache wählen:</p>
+        <button onclick="selectLanguage('de')">Deutsch</button>
+        <button onclick="selectLanguage('en')">Englisch</button>
+    </div>
+    
+    <div id="quiz-container">
+        <div id="timer"></div>
+        <div class="question-container">
+            <div class="question" id="question"></div>
+            <div class="answers" id="answers"></div>
+        </div>
+        <div id="result"></div>
+        <button id="nextQuestion" onclick="nextQuestion()">Nächste Frage</button>
+    </div>
+    
+    <div id="nameForm">
+        <p>Dein Score: <span id="finalScore"></span></p>
+        <p>Trage deinen Namen ein, um auf der Rangliste zu erscheinen:</p>
+        <input type="text" id="playerName" placeholder="Dein Name">
+        <button onclick="submitScore()">Score eintragen</button>
+    </div>
+    
+    <div id="leaderboard">
+        <h2>Rangliste</h2>
+        <ul id="leaderboardList"></ul>
+        <button onclick="restartQuiz()">Quiz erneut starten</button>
+    </div>
+    
+    <script src="quiz.js"></script>
+</body>
+</html>
